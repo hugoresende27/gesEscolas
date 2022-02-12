@@ -68,10 +68,11 @@ class TurmasController extends Controller
         $turma->letra = $request->input('turmas');
         $turma->ano = $request->input('anos');
         // $turma->prof_id = $professores ;
-        // dd($turma);
+        //  dd($request->input('profs') );
         $turma->save();
-        $turma->professores()->attach($prof_id );
-        // $prof->turmas()->attach($turma-> );
+        // $prof->turmas()->attach($prof_id);
+        $turma->professores()->attach($prof_id);
+        
     
 
         return redirect('/turmas/show')->with('message','Turma adicionada');
@@ -134,8 +135,8 @@ class TurmasController extends Controller
 
     
         $prof = new Professor;
-        $professores = Professor::where('professor_id',$request->input('profs'))->value('professor_id');
-        // dd($request->profs);
+        $prof_id = $prof->where('professor_id',$request->input('profs'))->value('professor_id');
+        // dd($prof_id);
         $turma = Turma::where('turma_id',$id)
             ->update([
             'letra'=>$request->input('turmas'),
@@ -144,8 +145,8 @@ class TurmasController extends Controller
             
         ]);
         
-        $turma->professores()->attach($professores);
-        $prof->turmas()->attach($professores);
+        $turma->professores()->attach($prof_id);
+        // $prof->turmas()->attach($professores);
 
         return redirect('/turmas/show')->with('message','Turma Actualizada');
     }

@@ -17,6 +17,6 @@ class Turma extends Model
     public function professores()
     {
         // return $this->belongsToMany(Professor::class,'prof_turma');
-        return $this->belongsToMany(Professor::class);
+        return $this->belongsToMany(Professor::class, 'professor_turma');
     }
 }

@@ -35,7 +35,7 @@
                             <a href="">Cursos</a>
                         </li>
                         <li>
-                            <a href="">Disciplinas</a>
+                            <a href="/disciplinas">Disciplinas</a>
                         </li>
                         <li>
                             <a href="/turmas">Turmas</a>

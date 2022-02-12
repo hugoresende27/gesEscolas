@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProfessoresController;
 use App\Http\Controllers\TurmasController;
+use App\Http\Controllers\DisciplinasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('/professores',ProfessoresController::class );
 Route::resource('/turmas',TurmasController::class );
+Route::resource('/disciplinas',DisciplinasController::class );

@@ -21,7 +21,7 @@
       <tr>
         <th scope="col">Ano</th>
         <th scope="col">Letra</th>
-        <th scope="col">Professores</th>
+        {{-- <th scope="col">Professores</th> --}}
         
         <th scope="col">EDITAR</th>
         <th scope="col">APAGAR</th>
@@ -34,15 +34,12 @@
       <tr>
         <td>{{ $t->ano }}</td>
         <td>{{ $t->letra }}</td>
-        <td>
+        {{-- <td>
             @foreach ($turmas['profs'] as $p)
-            {{ $t->turma_id }}
-            {{-- @if ($turmas['turmas']) --}}
-                {{-- {{ $turmas['profs'] }} --}}
-            {{-- @endif --}}
+        
                 {{ $p->nome }},
             @endforeach
-        </td>
+        </td> --}}
         
         
 
