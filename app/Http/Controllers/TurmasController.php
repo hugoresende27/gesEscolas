@@ -61,17 +61,22 @@ class TurmasController extends Controller
         //$professores = Professor::where('professor_id',$request->input('profs'))->value('professor_id');
        
          //dd($request);
-        $prof = new Professor;
-        $prof_id = $prof->where('professor_id',$request->input('profs'))->value('professor_id');
-    
+        //$prof = new Professor;
+        //$prof_id = $prof->where('professor_id',$request->input('profs'))->value('professor_id');
+        dd($request);
         $turma = new Turma;
-        $turma->letra = $request->input('turmas');
+        $turma->curso = $request->input('turmas');
         $turma->ano = $request->input('anos');
         // $turma->prof_id = $professores ;
         //  dd($request->input('profs') );
         $turma->save();
         // $prof->turmas()->attach($prof_id);
-        $turma->professores()->attach($prof_id);
+        //$turma->professores()->attach($prof_id);
+
+        $turma->professores()->create([
+            "turma_id" =>$request->id,
+            "professor_id"=>$request->input('profs')->value()
+        ]);
         
     
 
@@ -134,18 +139,21 @@ class TurmasController extends Controller
         ]);
 
     
-        $prof = new Professor;
-        $prof_id = $prof->where('professor_id',$request->input('profs'))->value('professor_id');
+       // $prof = new Professor;
+       // $prof_id = $prof->where('professor_id',$request->input('profs'))->value('professor_id');
         // dd($prof_id);
         $turma = Turma::where('turma_id',$id)
             ->update([
-            'letra'=>$request->input('turmas'),
+            'curso'=>$request->input('turmas'),
             'ano'=>$request->input('anos'),
             //'professor_id'=>$request->profs
             
         ]);
         
-        $turma->professores()->attach($prof_id);
+        $turma->professores()->create([
+            "turma_id" =>$request->id,
+            "professor_id"=>$request->input('profs')->value()
+        ]);
         // $prof->turmas()->attach($professores);
 
         return redirect('/turmas/show')->with('message','Turma Actualizada');
