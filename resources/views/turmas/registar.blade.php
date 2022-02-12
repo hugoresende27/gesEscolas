@@ -32,7 +32,7 @@
 
             <div class="form-group text-white p-3" style="font-size:22pt">
 
-                <label for="nome">Letra da Turma:</label>                
+                <label for="nome">Curso da Turma:</label>                
                 <input type="radio"  name="turmas" value="A"> A 
                 <input type="radio"  name="turmas" value="B"> B 
                 <input type="radio"  name="turmas" value="C"> C 

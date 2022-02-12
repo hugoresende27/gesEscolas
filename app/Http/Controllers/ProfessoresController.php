@@ -14,6 +14,7 @@ class ProfessoresController extends Controller
      */
     public function index()
     {
+        
         return view('professores.index');
     }
 
@@ -59,6 +60,7 @@ class ProfessoresController extends Controller
         $prof->email = $request->input('email');
         $prof->password = $request->input('password');
         $prof->save();
+        $prof->turmas();
         
     
 

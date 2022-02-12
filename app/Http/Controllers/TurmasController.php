@@ -63,20 +63,21 @@ class TurmasController extends Controller
          //dd($request);
         //$prof = new Professor;
         //$prof_id = $prof->where('professor_id',$request->input('profs'))->value('professor_id');
-        dd($request);
+        // dd($request);
         $turma = new Turma;
         $turma->curso = $request->input('turmas');
         $turma->ano = $request->input('anos');
         // $turma->prof_id = $professores ;
         //  dd($request->input('profs') );
         $turma->save();
+        $turma->professores();
         // $prof->turmas()->attach($prof_id);
         //$turma->professores()->attach($prof_id);
 
-        $turma->professores()->create([
-            "turma_id" =>$request->id,
-            "professor_id"=>$request->input('profs')->value()
-        ]);
+        // $turma->professores()->create([
+        //     "turma_id" =>$request->id,
+        //     "professor_id"=>$request->input('profs')->value()
+        // ]);
         
     
 
