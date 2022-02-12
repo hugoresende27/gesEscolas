@@ -18,8 +18,48 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+
+        *{
+            font-size:12pt;
+            font-family: 'Consolas',sans-serif;
+        }
+        a{
+            text-decoration: none;
+            /* color: #fff; */
+        }
+        .msg-info{
+            background-color: greenyellow;
+            text-align: center;
+            margin: 10px;
+            width: fit-content;
+            
+        }
+        .btn-voltar{
+            background-color: green;
+            border-radius: 5px;
+            width: 100px;
+        }
+        .btn-voltar a{
+            color: white;
+            text-decoration: none;
+        }
+        .btn-voltar:hover{
+            background-color: red;
+        }
+        .delete{
+            background-color: red;
+            color:white;
+            text-align: center;
+            margin: 10px;
+            width: fit-content;
+        }
+        
+
+    </style>
 </head>
-<body>
+<body class="bg-dark">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -76,8 +116,18 @@
         </nav>
 
         <main class="py-4">
+            
+        <div>
             @yield('content')
+       </div>
+
+
+       <div>
+            @include('layouts.footer')
+       </div>
+            
         </main>
     </div>
+    
 </body>
 </html>

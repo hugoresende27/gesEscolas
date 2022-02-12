@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ProfessoresController;
+use App\Http\Controllers\TurmasController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +17,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('/professores',ProfessoresController::class );
+Route::resource('/turmas',TurmasController::class );
