@@ -44,7 +44,7 @@ class TurmasController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'turmas'=>'required|max:1',
+            'turmas'=>'required',
             'anos'=>'required|max:2',
             'profs'=>'required|min:1'
          
@@ -95,7 +95,7 @@ class TurmasController extends Controller
 
         $turmas = Turma::orderBy('ano', 'DESC')->get();
         $profs = Professor::all();
-       
+        // dd($turmas);
         return view ('turmas.todos')
                 ->with('turmas', ['turmas'=> $turmas,
                                  'profs'=>$profs]);
@@ -110,10 +110,12 @@ class TurmasController extends Controller
      */
     public function edit($id)
     {
-        $turma = Turma::where('turma_id', $id)->first();
+        $turmas = Turma::where('turma_id', $id)->first();
+        $t = Turma::all();
         $profs = Professor::all();
-        return view('turmas.editar')->with('turma', ['turma'=> $turma,
-                                                    'profs'=>$profs]);
+        return view('turmas.editar')->with('turmas', ['turmas'=> $turmas,
+                                                        'profs'=>$profs,
+                                                        't'=>$t]);
     }
 
     /**
@@ -126,7 +128,7 @@ class TurmasController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'turmas'=>'required|max:1',
+            'turmas'=>'required',
             'anos'=>'required|max:2',
             'profs'=>'required'
          
@@ -140,21 +142,28 @@ class TurmasController extends Controller
         ]);
 
     
+        $turma = new Turma;
+        $turma->curso = $request->input('turmas');
+        $turma->ano = $request->input('anos');
+        
+        $turma->professores();
+
+
        // $prof = new Professor;
        // $prof_id = $prof->where('professor_id',$request->input('profs'))->value('professor_id');
         // dd($prof_id);
-        $turma = Turma::where('turma_id',$id)
-            ->update([
-            'curso'=>$request->input('turmas'),
-            'ano'=>$request->input('anos'),
-            //'professor_id'=>$request->profs
+        // $turma = Turma::where('turma_id',$id)
+        //     ->update([
+        //     'curso'=>$request->input('turmas'),
+        //     'ano'=>$request->input('anos'),
+        //     //'professor_id'=>$request->profs
             
-        ]);
-        
-        $turma->professores()->create([
-            "turma_id" =>$request->id,
-            "professor_id"=>$request->input('profs')->value()
-        ]);
+        // ]);
+        // $turma->professores();
+        // $turma->professores()->create([
+        //     "turma_id" =>$request->id,
+        //     "professor_id"=>$request->input('profs')->value()
+        // ]);
         // $prof->turmas()->attach($professores);
 
         return redirect('/turmas/show')->with('message','Turma Actualizada');

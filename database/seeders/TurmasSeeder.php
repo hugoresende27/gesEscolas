@@ -14,6 +14,6 @@ class TurmasSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Turma::factory(10)->create();
+        \App\Models\Turma::factory(5)->create();
     }
 }

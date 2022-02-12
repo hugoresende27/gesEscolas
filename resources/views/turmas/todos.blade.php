@@ -20,7 +20,7 @@
     <thead>
       <tr>
         <th scope="col">Ano</th>
-        <th scope="col">Letra</th>
+        <th scope="col">Curso</th>
         {{-- <th scope="col">Professores</th> --}}
         
         <th scope="col">EDITAR</th>
@@ -33,7 +33,7 @@
         
       <tr>
         <td>{{ $t->ano }}</td>
-        <td>{{ $t->letra }}</td>
+        <td>{{ $t->curso }}</td>
         {{-- <td>
             @foreach ($turmas['profs'] as $p)
         

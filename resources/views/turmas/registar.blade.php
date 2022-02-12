@@ -32,35 +32,39 @@
 
             <div class="form-group text-white p-3" style="font-size:22pt">
 
-                <label for="nome">Curso da Turma:</label>                
-                <input type="radio"  name="turmas" value="A"> A 
-                <input type="radio"  name="turmas" value="B"> B 
-                <input type="radio"  name="turmas" value="C"> C 
-                <input type="radio"  name="turmas" value="D"> D 
-                <input type="radio"  name="turmas" value="E"> E 
-                <input type="radio"  name="turmas" value="F"> F 
+                <label for="nome">Curso da Turma:</label>     <br>    
+                
+                @foreach ($turmas['turmas'] as $t)
+               
+                   <label for="{{ $t->curso }}"> <input type="radio" id="{{ $t->curso }}" name="turmas" value={{ $t->curso }}> {{ $t->curso }} <br> </label>
+
+                @endforeach  
+
+               
+            
+            </div>
+
+            <div class="form-group text-white p-3 " style="font-size:22pt">
+               
+                <label for="nome">Ano da Turma:</label>  <br>
+
+                @foreach ($turmas['turmas'] as $c)
+               
+                    <label for="{{ $c->ano }}"> <input type="radio"  id="{{ $c->ano }}" name="anos" value="{{ $c->ano }}"> {{ $c->ano }} </label><br>
+
+                @endforeach   
+                              
+                
             
             </div>
 
             <div class="form-group text-white p-3 " style="font-size:22pt">
 
-                <label for="nome">Ano da Turma:</label>                
-                <input type="radio"  name="anos" value="7"> 7º
-                <input type="radio"  name="anos" value="8"> 8º 
-                <input type="radio"  name="anos" value="9"> 9º 
-                <input type="radio"  name="anos" value="10"> 10º 
-                <input type="radio"  name="anos" value="11"> 11º 
-                <input type="radio"  name="anos" value="12"> 12º 
-            
-            </div>
-
-            <div class="form-group text-white p-3 " style="font-size:22pt">
-
-                    <label for="nome">Professores da Turma: </label> 
+                    <label for="nome">Professores da Turma: </label> <br>
 
                 @foreach ($turmas['profs'] as $p)
                
-                    <input type="checkbox"  name="profs[]" value={{ $p->professor_id }}> {{ $p->nome }}
+                   <label for="{{ $p->nome }}"> <input type="checkbox"  id="{{ $p->nome }}" name="profs" value={{ $p->professor_id }}> {{ $p->nome }} </label><br>
 
                @endforeach       
                 

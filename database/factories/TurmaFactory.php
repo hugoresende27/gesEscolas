@@ -17,9 +17,11 @@ class TurmaFactory extends Factory
     public function definition()
     {
         return [
-                'curso' => $this->faker->name(),
+                'curso' => $this->faker->slug(),
                 'ano' => rand(7, 12),
                
         ];
+
+        
     }
 }

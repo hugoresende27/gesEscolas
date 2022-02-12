@@ -14,6 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        \App\Models\User::factory()->create();
         if(config('admin.admin_name')) {
             User::firstOrCreate(
                 ['email' => config('admin.admin_email')], [

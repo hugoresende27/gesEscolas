@@ -5,7 +5,7 @@ footer{
     padding: 1rem;
     text-align: center;
     color:#fff;
-    position: absolute;
+    position: relative;
     bottom: 0rem; 
     left: 50%; 
     transform: translateX(-50%);
