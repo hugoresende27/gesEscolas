@@ -20,8 +20,8 @@ return new class extends Migration
             $table->integer('idade');
             $table->string('email')->unique();
             $table->string('password');
-            // $table->integer('turma_id')->unsigned();
-            // $table->foreign('turma_id')->references('turma_id')->on('turmas')->nullable();
+            $table->integer('disciplina_id')->unsigned();
+            $table->foreign('disciplina_id')->references('id')->on('disciplinas')->nullable();
             $table->timestamps();
         });
     }
