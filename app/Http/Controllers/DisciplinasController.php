@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Disciplina;
 
 class DisciplinasController extends Controller
 {
@@ -34,7 +35,23 @@ class DisciplinasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nome'=>'required',
+       
+        ],
+        [
+            
+            'nome.required' => 'Precisamos de um nome',
+        ]);
+
+        $disc = new Disciplina;
+        $disc->nome = $request->input('nome');
+       
+        $disc->save();
+        $disc->professor();
+
+        return redirect('/disciplinas')->with('message','Disciplina adicionada');
+
     }
 
     /**

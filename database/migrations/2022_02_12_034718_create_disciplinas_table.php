@@ -14,9 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('disciplinas', function (Blueprint $table) {
-            $table->increments('disciplina_id');
+            $table->id();
+            // $table->increments('disciplina_id');
             $table->string('nome');
-            // $table->foreignId('curso');
+            $table->integer('professores_id')->unsigned()->nullable();
+            // $table->foreign('professores_id')->references('professores_id')->on('professors')->nullable();
             $table->timestamps();
         });
     }

@@ -14,11 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('turmas', function (Blueprint $table) {
-            $table->increments('turma_id');
+            $table->id();
+            // $table->increments('turma_id');
             $table->string('curso');
             $table->integer('ano');
-            // $table->integer('prof_id')->unsigned();
-            // $table->foreign('prof_id')->references('id')->on('professors')->nullable();
+            // $table->integer('professores_id')->unsigned();
+            // $table->foreign('professores_id')->references('professores_id')->on('professors')->nullable();
             $table->timestamps();
         });
     }

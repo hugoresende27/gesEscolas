@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('turma_id');
             $table->unsignedBigInteger('professor_id');
             // $table->foreign('turma_id')->references('turma_id')->on('turmas')->nullable();
-            // $table->foreign('prof_id')->references('id')->on('professors')->nullable();
+            // $table->foreign('professores_id')->references('professores_id')->on('professors')->nullable();
             $table->timestamps();
         });
     }
